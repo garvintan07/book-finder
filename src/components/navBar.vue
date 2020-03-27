@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <div>
+     <div>
       <b-navbar toggleable="lg" type="dark" variant="success">
         <b-container>
             <b-navbar-brand href="#">
@@ -29,37 +28,19 @@
           </b-container>
       </b-navbar>
     </div>  
-  
-    <router-view></router-view>
-  </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import Search from './components/searchBar.vue'
-// import axios from 'axios'
-// import keys from '../config.js'
-// import Books from './components/books.vue'
-// import NavBar from './components/navBar.vue'
-
-export default {
-  name: 'App',
-}
+    export default {
+        name: 'NavBar'
+    }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-#header {
-  padding-bottom: 1em;
-}
-
+<style scoped>
+  #home {
+      color: white;
+  }
+  #user {
+      color: black;
+  }
 </style>
-
- 
