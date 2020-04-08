@@ -1,13 +1,28 @@
 <template>
   <div>
-    {{ this.books[0] }}
+    <b-container fluid class="p-4 bg-dark">
+      BOKKSHEL
+      <b-row>
+        <b-col>
+          <div v-bind:key="book" v-for="book in books">
+            <ul class="bookshelf">
+              <BookshelfEntry v-bind:book="book" />
+            </ul>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import BookshelfEntry from "../components/bookshelfEntry.vue";
 export default {
   name: "Bookshelf",
+  components: {
+    BookshelfEntry,
+  },
   data() {
     return {
       books: [],
@@ -31,4 +46,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.bookshelf {
+  display: flex;
+  //   flex-wrap: wrap;
+  flex-direction: row;
+  //   height: 50em;
+}
+</style>

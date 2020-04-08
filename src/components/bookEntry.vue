@@ -45,6 +45,13 @@ export default {
         image: this.book.volumeInfo.imageLinks.smallThumbnail,
       };
       this.$emit("add-book", bookInfo);
+      this.makeToast("success");
+    },
+    makeToast(variant = null) {
+      this.$bvToast.toast("Added to bookshelf!", {
+        variant: variant,
+        solid: true,
+      });
     },
   },
 };
@@ -60,10 +67,8 @@ export default {
   overflow: scroll;
 }
 #card {
-  height: 25em;
-  /* overflow: scroll; */
+  height: 28em;
 }
-
 img {
   margin-top: 3em;
   width: 7em;

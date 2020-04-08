@@ -6,7 +6,6 @@
           <b-navbar-brand href="#">
             <router-link id="home" to="/">Home</router-link>
           </b-navbar-brand>
-
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           <b-collapse id="nav-collapse" is-nav>
             <!-- Right aligned nav items -->
@@ -57,7 +56,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 #home {
   color: white;

@@ -4,11 +4,13 @@ import router from "./router";
 import {
   BootstrapVue,
   IconsPlugin,
+  ImagePlugin,
   InputGroupPlugin,
   ModalPlugin,
   CardPlugin,
   ButtonPlugin,
   NavbarPlugin,
+  FormTextareaPlugin,
 } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -22,6 +24,8 @@ Vue.use(ModalPlugin);
 Vue.use(CardPlugin);
 Vue.use(ButtonPlugin);
 Vue.use(NavbarPlugin);
+Vue.use(ImagePlugin);
+Vue.use(FormTextareaPlugin);
 Vue.config.productionTip = false;
 
 new Vue({

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1 id="header">BOOKKEEPER</h1>
     <Search v-on:handle-submit="handleSubmit" />
     <br />
     <Books v-on:add-book="addBook" v-bind:books="this.books" />
@@ -22,6 +21,7 @@ export default {
     return {
       searchQuery: "",
       books: [],
+      show: false,
     };
   },
   methods: {
@@ -37,6 +37,7 @@ export default {
           },
         })
         .then((response) => {
+          console.log(keys.google_api_key);
           console.log(response.data.items);
           this.books = response.data.items;
         })
