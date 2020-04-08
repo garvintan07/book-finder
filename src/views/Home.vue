@@ -1,9 +1,9 @@
 <template>
     <div>
-      <h1 id='header'>BOOK FINDER</h1>
+      <h1 id='header'>BOOKKEEPER</h1>
     <Search v-on:handle-submit="handleSubmit"/>
     <br/>
-    <Books v-bind:books="this.books"/>
+    <Books v-on:add-book="addBook" v-bind:books="this.books"/>
     </div>
 </template>
 
@@ -17,7 +17,6 @@ import Books from '../components/books.vue'
        components: {
     Search,
     Books
-    // NavBar
   },
   data() {
     return {
@@ -39,6 +38,15 @@ import Books from '../components/books.vue'
       .then(response => {
         console.log(response.data.items)
         this.books = response.data.items
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    },
+    addBook(book) {
+      axios.post('http://localhost:3000/books',book)
+      .then(response=>{
+        console.log(response)
       })
       .catch(error => {
         console.log(error)

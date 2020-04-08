@@ -16,12 +16,15 @@
                 </b-nav-form>
                 <b-nav-item-dropdown right>
                   <!-- Using 'button-content' slot -->
-                  <template slot="button-content"><em>User</em></template>
+                  <template id='home' slot="button-content"><em>User</em></template>
                   <b-dropdown-item href="#">
                 <router-link id="user" to="/user">Profile</router-link>
 
                   </b-dropdown-item>
-                  <b-dropdown-item href="#">My Bookshelf</b-dropdown-item>
+                  <b-dropdown-item href="#">
+                <router-link id="user" to="/bookshelf">My Bookshelf</router-link>
+
+                  </b-dropdown-item>
                   <b-dropdown-item href="#">Sign Out</b-dropdown-item>
                 </b-nav-item-dropdown>
               </b-navbar-nav>
@@ -55,6 +58,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#home {
+      color: white;
+  }
+#user {
+  color: black
 }
 #header {
   padding-bottom: 1em;

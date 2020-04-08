@@ -1,7 +1,7 @@
 <template>
     <div id='books'>
       <div v-bind:key="book" v-for="book in books">
-          <BookEntry v-bind:book="book" />
+          <BookEntry v-on="$listeners" v-bind:book="book" />
           <br/>
       </div>
     </div>

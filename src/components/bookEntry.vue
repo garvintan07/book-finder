@@ -19,7 +19,7 @@
           </b-card-text>
            <button>Buy!</button>
              <br/>
-            <button>Add to bookshelf</button>
+            <button @click="addBook">Add to bookshelf</button>
         </b-card-body>
           </div>
        
@@ -34,7 +34,20 @@
 <script>
     export default {
         name: 'BookEntry',
-        props: ['book']
+        props: ['book'],
+        methods: {
+          addBook() {
+            let bookInfo = {
+              title: this.book.volumeInfo.title,
+              author: this.book.volumeInfo.authors[0],
+              publisher: this.book.volumeInfo.publisher,
+              date: this.book.volumeInfo.publishedDate,
+              status: "not started",
+              image: this.book.volumeInfo.imageLinks.smallThumbnail
+            }
+            this.$emit('add-book', bookInfo)
+          }
+        }
     }
 </script>
 
