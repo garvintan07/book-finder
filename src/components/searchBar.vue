@@ -25,7 +25,11 @@ export default {
   methods: {
     handleSubmit() {
       let search = this.query;
-      this.$store.dispatch("fetchBooks", search);
+      if (search !== "") {
+        this.$store.dispatch("fetchBooks", search);
+      } else {
+        alert("nothing searched!");
+      }
       // this.$emit("handle-submit");
     },
   },

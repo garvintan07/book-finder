@@ -1,5 +1,5 @@
 <template>
-  <div v-on:reset="reset">
+  <div>
     <Search />
     <br />
     <div v-if="$store.state.loading" class="d-flex justify-content-center mb-3">
@@ -8,6 +8,18 @@
         label="Large Spinner"
       ></b-spinner>
     </div>
+    <div
+      v-if="$store.state.books.length === 0 && Object.keys(quote).length !== 0"
+    >
+      <br />
+      <b-jumbotron id="quote">
+        <template v-slot:lead> "{{ quote.quote }}" </template>
+        <hr class="my-4" />
+        <p>
+          {{ quote.author }}
+        </p>
+      </b-jumbotron>
+    </div>
     <Books v-on:add-book="addBook" v-bind:books="this.books" />
   </div>
 </template>
@@ -15,6 +27,7 @@
 <script>
 import Search from "../components/searchBar.vue";
 import axios from "axios";
+import EventBus from "../eventBus.js";
 // import keys from "../../config.js";
 import Books from "../components/books.vue";
 export default {
@@ -22,6 +35,11 @@ export default {
   components: {
     Search,
     Books,
+  },
+  data() {
+    return {
+      quote: {},
+    };
   },
   methods: {
     addBook(book) {
@@ -34,9 +52,30 @@ export default {
           console.log(error);
         });
     },
-    reset() {
-      console.log("this worked");
+    getQuote() {
+      let tags = ["books", "writing", "literature", "knowledge"];
+      let index = Math.floor(Math.random() * 4);
+      let quoteIndex = Math.floor(Math.random() * 30);
+      axios
+        .get(`https://goodquotesapi.herokuapp.com/tag/${tags[index]}`)
+        .then((response) => {
+          let quote = response.data.quotes[quoteIndex];
+          this.quote = {
+            quote: quote.quote,
+            author: quote.author,
+          };
+          console.log(this.quote);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
+  },
+  mounted() {
+    this.getQuote();
+    EventBus.$on("reset-search", () => {
+      this.getQuote();
+    });
   },
   computed: {
     books() {
@@ -46,4 +85,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#quote {
+  width: 35em;
+  margin: auto;
+}
+</style>

@@ -13,6 +13,7 @@ import {
   NavbarPlugin,
   SpinnerPlugin,
   FormTextareaPlugin,
+  JumbotronPlugin,
 } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -29,6 +30,7 @@ Vue.use(NavbarPlugin);
 Vue.use(ImagePlugin);
 Vue.use(FormTextareaPlugin);
 Vue.use(SpinnerPlugin);
+Vue.use(JumbotronPlugin);
 Vue.config.productionTip = false;
 
 new Vue({
