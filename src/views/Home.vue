@@ -2,6 +2,9 @@
   <div v-on:reset="reset">
     <Search />
     <br />
+    <div v-if="$store.state.loading" class="d-flex justify-content-center mb-3">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
     <Books v-on:add-book="addBook" v-bind:books="this.books" />
   </div>
 </template>

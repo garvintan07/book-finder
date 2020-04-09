@@ -11,6 +11,7 @@ import {
   CardPlugin,
   ButtonPlugin,
   NavbarPlugin,
+  SpinnerPlugin,
   FormTextareaPlugin,
 } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
@@ -27,6 +28,7 @@ Vue.use(ButtonPlugin);
 Vue.use(NavbarPlugin);
 Vue.use(ImagePlugin);
 Vue.use(FormTextareaPlugin);
+Vue.use(SpinnerPlugin);
 Vue.config.productionTip = false;
 
 new Vue({

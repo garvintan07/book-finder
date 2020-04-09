@@ -5,7 +5,7 @@
         <b-container>
           <b-navbar-brand href="#">
             <router-link @click.native="reset" id="home" to="/"
-              >Home</router-link
+              >BOOKeeper</router-link
             >
           </b-navbar-brand>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -18,6 +18,9 @@
                 <template id="home" slot="button-content"
                   ><em>User</em></template
                 >
+                <b-dropdown-item href="#">
+                  <router-link id="user" to="/">Home</router-link>
+                </b-dropdown-item>
                 <b-dropdown-item href="#">
                   <router-link id="user" to="/user">Profile</router-link>
                 </b-dropdown-item>

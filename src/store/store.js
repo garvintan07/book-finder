@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const state = {
   books: [],
   query: "",
+  loading: false,
 };
 
 const mutations = {
@@ -17,10 +18,14 @@ const mutations = {
   RESET() {
     state.books = [];
   },
+  SET_LOADING(state, boolean) {
+    state.loading = boolean;
+  },
 };
 
 const actions = {
   fetchBooks({ commit }, search) {
+    commit("SET_LOADING", true);
     axios
       .get("https://www.googleapis.com/books/v1/volumes", {
         params: {
@@ -35,6 +40,7 @@ const actions = {
         console.log(response.data.items);
         // this.books = response.data.items;
         commit("GET_BOOKS", response.data.items);
+        commit("SET_LOADING", false);
       })
       .catch((error) => {
         console.log(error);
