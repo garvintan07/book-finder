@@ -7,7 +7,6 @@ Vue.use(Vuex);
 
 const state = {
   books: [],
-  query: "",
   loading: false,
 };
 

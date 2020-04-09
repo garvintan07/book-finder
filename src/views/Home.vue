@@ -3,7 +3,10 @@
     <Search />
     <br />
     <div v-if="$store.state.loading" class="d-flex justify-content-center mb-3">
-      <b-spinner label="Loading..."></b-spinner>
+      <b-spinner
+        style="width: 3rem; height: 3rem;"
+        label="Large Spinner"
+      ></b-spinner>
     </div>
     <Books v-on:add-book="addBook" v-bind:books="this.books" />
   </div>

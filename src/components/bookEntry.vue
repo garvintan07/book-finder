@@ -19,7 +19,7 @@
                 Published: {{ book.volumeInfo.publishedDate }}
                 <br />
               </b-card-text>
-              <button>Buy!</button>
+              <button @click="buyBook">Buy!</button>
               <br />
               <button @click="addBook">Add to bookshelf</button>
             </b-card-body>
@@ -53,6 +53,9 @@ export default {
         solid: true,
       });
     },
+    buyBook() {
+      window.open(this.book.volumeInfo.infoLink);
+    },
   },
 };
 </script>
@@ -62,12 +65,13 @@ export default {
   width: 35em;
   height: 18em;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 1.5em;
   overflow-y: hidden;
   overflow: scroll;
 }
 #card {
   height: 28em;
+  /* padding-right: 10em; */
 }
 img {
   margin-top: 3em;
