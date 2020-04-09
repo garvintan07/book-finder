@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Search v-on:handle-submit="handleSubmit" />
+  <div v-on:reset="reset">
+    <Search />
     <br />
     <Books v-on:add-book="addBook" v-bind:books="this.books" />
   </div>
@@ -9,7 +9,7 @@
 <script>
 import Search from "../components/searchBar.vue";
 import axios from "axios";
-import keys from "../../config.js";
+// import keys from "../../config.js";
 import Books from "../components/books.vue";
 export default {
   name: "Home",
@@ -17,34 +17,7 @@ export default {
     Search,
     Books,
   },
-  data() {
-    return {
-      searchQuery: "",
-      books: [],
-      show: false,
-    };
-  },
   methods: {
-    handleSubmit(search) {
-      this.searchQuery = search;
-      axios
-        .get("https://www.googleapis.com/books/v1/volumes", {
-          params: {
-            q: search,
-            startIndex: 0,
-            maxResults: 40,
-            key: keys.google_api_key,
-          },
-        })
-        .then((response) => {
-          console.log(keys.google_api_key);
-          console.log(response.data.items);
-          this.books = response.data.items;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     addBook(book) {
       axios
         .post("http://localhost:3000/books", book)
@@ -54,6 +27,14 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    reset() {
+      console.log("this worked");
+    },
+  },
+  computed: {
+    books() {
+      return this.$store.state.books;
     },
   },
 };

@@ -4,6 +4,7 @@
       <b-form-input
         v-model="query"
         placeholder="search for a book..."
+        @keyup.enter="handleSubmit"
       ></b-form-input>
       <b-input-group-append>
         <b-button @click="handleSubmit">Go!</b-button>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import EventBus from "../eventBus.js";
 export default {
   name: "Search",
   data() {
@@ -23,8 +25,14 @@ export default {
   methods: {
     handleSubmit() {
       let search = this.query;
-      this.$emit("handle-submit", search);
+      this.$store.dispatch("fetchBooks", search);
+      // this.$emit("handle-submit");
     },
+  },
+  mounted() {
+    EventBus.$on("reset-search", () => {
+      this.query = "";
+    });
   },
 };
 </script>

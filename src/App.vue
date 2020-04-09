@@ -4,7 +4,9 @@
       <b-navbar toggleable="lg" type="dark" variant="success">
         <b-container>
           <b-navbar-brand href="#">
-            <router-link id="home" to="/">Home</router-link>
+            <router-link @click.native="reset" id="home" to="/"
+              >Home</router-link
+            >
           </b-navbar-brand>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
           <b-collapse id="nav-collapse" is-nav>
@@ -43,9 +45,16 @@
 // import keys from '../config.js'
 // import Books from './components/books.vue'
 // import NavBar from './components/navBar.vue'
+import EventBus from "./eventBus.js";
 
 export default {
   name: "App",
+  methods: {
+    reset() {
+      this.$store.commit("RESET");
+      EventBus.$emit("reset-search");
+    },
+  },
 };
 </script>
 
