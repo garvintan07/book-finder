@@ -1,5 +1,5 @@
 <template>
-  <!-- THINGS TO ADD -checkmark for finished books, align books vertically, add cooler background -->
+  <!-- THINGS TO ADD -checkmark for finished books, align books vertically, add cooler background ,progress bar-->
   <div>
     <b-img
       id="img"

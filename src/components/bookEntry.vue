@@ -54,7 +54,12 @@ export default {
       });
     },
     buyBook() {
-      window.open(this.book.volumeInfo.infoLink);
+      const confirmation = confirm(
+        "This will take you to an external purchasing page. \n\nOK to proceed?"
+      );
+      if (confirmation) {
+        window.open(this.book.volumeInfo.infoLink);
+      }
     },
   },
 };
