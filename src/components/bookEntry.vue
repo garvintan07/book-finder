@@ -45,13 +45,6 @@ export default {
         image: this.book.volumeInfo.imageLinks.smallThumbnail,
       };
       this.$emit("add-book", bookInfo);
-      this.makeToast("success");
-    },
-    makeToast(variant = null) {
-      this.$bvToast.toast("Added to bookshelf!", {
-        variant: variant,
-        solid: true,
-      });
     },
     buyBook() {
       const confirmation = confirm(

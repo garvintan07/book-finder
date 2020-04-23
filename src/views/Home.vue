@@ -47,6 +47,7 @@ export default {
         .post("http://localhost:3000/books", book)
         .then((response) => {
           console.log(response);
+          this.makeToast("success");
         })
         .catch((error) => {
           console.log(error);
@@ -64,11 +65,16 @@ export default {
             quote: quote.quote,
             author: quote.author,
           };
-          console.log(this.quote);
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    makeToast(variant = null) {
+      this.$bvToast.toast("Added to bookshelf!", {
+        variant: variant,
+        solid: true,
+      });
     },
   },
   mounted() {
